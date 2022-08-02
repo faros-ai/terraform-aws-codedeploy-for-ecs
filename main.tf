@@ -77,10 +77,13 @@ resource "aws_codedeploy_deployment_group" "default" {
     # An optional test traffic route can be specified.
     # https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_TargetGroupPairInfo.html
     target_group_pair_info {
+      # ===============================================================================
+      # Disabled for now, since it's an issue when passing multiple listener arns
+      # ===============================================================================
       # The path used by a load balancer to route production traffic when an Amazon ECS deployment is complete.
-      prod_traffic_route {
-        listener_arns = var.lb_listener_arns
-      }
+      # prod_traffic_route {
+      #   listener_arns = var.lb_listener_arns
+      # }
 
       # One pair of target groups. One is associated with the original task set.
       # The second target is associated with the task set that serves traffic after the deployment completes.
